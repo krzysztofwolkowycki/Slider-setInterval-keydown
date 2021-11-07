@@ -18,7 +18,7 @@ const h1 = document.querySelector('h1.slider');
 const dots = [...document.querySelectorAll('.dots span')];
 
 
-const time = 2000;
+const time = 1000;
 let indexActive = 0;
 
 function changeDots(){
@@ -38,11 +38,25 @@ function changeSlider(){
     h1.textContent = imgList[indexActive].textH1;
     changeDots();
 }
+let indexInterval = setInterval(changeSlider, time);
 
-function keyChangeSlide(event){
-
+function keyChangeSlider(e){
+    console.log(e.keyCode);
+    clearInterval(indexInterval);
+    if(e.keyCode == 37 || e.keyCode == 39){
+        e.keyCode == 37 ? indexActive-- : indexActive++;
+    }
+    if(indexActive === imgList.length){
+        indexActive = 0;
+    }else if(indexActive < 0){
+        indexActive = imgList.length-1;
+    }
+    img.src = imgList[indexActive].imgSrc;
+    h1.textContent = imgList[indexActive].textH1;
+    changeDots();
+    
 }
 
-setInterval(changeSlider, time);
+
 
 window.addEventListener('keydown', keyChangeSlider);

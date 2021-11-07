@@ -54,7 +54,7 @@ function keyChangeSlider(e){
     img.src = imgList[indexActive].imgSrc;
     h1.textContent = imgList[indexActive].textH1;
     changeDots();
-    
+    indexInterval = setInterval(changeSlider, time);
 }
 
 

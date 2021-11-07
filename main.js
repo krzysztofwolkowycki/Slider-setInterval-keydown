@@ -25,7 +25,6 @@ function changeDots(){
     const indexDot = dots.findIndex(dot => dot.classList.contains('active'));
     dots[indexDot].classList.remove('active');
     dots[indexActive].classList.add('active');
-
 }
 
 
@@ -40,5 +39,10 @@ function changeSlider(){
     changeDots();
 }
 
+function keyChangeSlide(event){
+
+}
 
 setInterval(changeSlider, time);
+
+window.addEventListener('keydown', keyChangeSlider);
